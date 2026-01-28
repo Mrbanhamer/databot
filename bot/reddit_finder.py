@@ -1,4 +1,5 @@
 import requests
+from main_menu.menu import main_menu
 
 class reddit:
     def __init__(self, subreddit):
@@ -27,6 +28,8 @@ class reddit:
             print("Failed to get JSON. Response text:")
             print(response.text[:500])  # show first 500 characters
 
-subreddit_name = input("Write a subreddit: ")
+subreddit_name = main_menu()
+if subreddit_name == 'None':
+    exit()
 scraper = reddit(subreddit_name)
 scraper.connect()
