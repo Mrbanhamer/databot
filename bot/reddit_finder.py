@@ -21,3 +21,4 @@ if response.status_code == 200:
 else:
     print("Failed to get JSON. Response text:")
     print(response.text[:500])  # show first 500 characters
+    print('hej')
