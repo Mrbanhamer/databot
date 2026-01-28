@@ -1,0 +1,62 @@
+[
+  {
+    "post_rank": 1,
+    "post_upvotes": 1200,
+    "comment_upvotes": 400,
+    "engagement_ratio": 0.3333333333333333
+  },
+  {
+    "post_rank": 2,
+    "post_upvotes": 980,
+    "comment_upvotes": 350,
+    "engagement_ratio": 0.35714285714285715
+  },
+  {
+    "post_rank": 3,
+    "post_upvotes": 1500,
+    "comment_upvotes": 600,
+    "engagement_ratio": 0.4
+  },
+  {
+    "post_rank": 4,
+    "post_upvotes": 700,
+    "comment_upvotes": 200,
+    "engagement_ratio": 0.2857142857142857
+  },
+  {
+    "post_rank": 5,
+    "post_upvotes": 430,
+    "comment_upvotes": 90,
+    "engagement_ratio": 0.20930232558139536
+  },
+  {
+    "post_rank": 6,
+    "post_upvotes": 860,
+    "comment_upvotes": 300,
+    "engagement_ratio": 0.3488372093023256
+  },
+  {
+    "post_rank": 7,
+    "post_upvotes": 300,
+    "comment_upvotes": 60,
+    "engagement_ratio": 0.2
+  },
+  {
+    "post_rank": 8,
+    "post_upvotes": 1100,
+    "comment_upvotes": 500,
+    "engagement_ratio": 0.45454545454545453
+  },
+  {
+    "post_rank": 9,
+    "post_upvotes": 640,
+    "comment_upvotes": 180,
+    "engagement_ratio": 0.28125
+  },
+  {
+    "post_rank": 10,
+    "post_upvotes": 520,
+    "comment_upvotes": 140,
+    "engagement_ratio": 0.2692307692307692
+  }
+]
