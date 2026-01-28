@@ -1,40 +1,37 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-#Fake data to simulate reddit comments etc
-
-#Likes on top 10 
+#-----------------------------
+#MOCK DATA
+#-----------------------------
 post_scores = [1200, 980, 1500, 700, 430, 860, 300, 1100, 640, 520]
-
-#Total likes on comments
 comment_scores = [400, 350, 600, 200, 90, 300, 60, 500, 180, 140]
 
-#Correlation
-correlation = np.corrcoef(post_scores, comment_scores)[0, 1]
-print("Correlation coefficient:", round(correlation, 2))
+#Calculate engagement ratio
+engagement_ratio = [c/p if p != 0 else 0 for c, p in zip(comment_scores, post_scores)]
 
-#Engagment ratio
-#engagement_ratio = [c/p if p != 0 else 0 for c, p in zip(comment_scores, post_scores)]
-#print("\nEngagement ratio (comment likes per post like) per post:")
-#for i, ratio in enumerate(engagement_ratio, start=1):
-#    print(f"post {i}: {ratio:.2f}")
-
-#visual
+#-----------------------------
+#GRAPH WITH TWO Y-AXES
+#-----------------------------
 x = np.arange(1, 11)
-width = 0.25
+width = 0.35
 
-#Bar chart
-plt.bar(x - width / 2, post_scores, width, label="Post upvotes")
-plt.bar(x + width / 2, comment_scores, width, label="Comment upvotes")
+fig, ax1 = plt.subplots(figsize=(10,5))
 
-#plt.bar(x + width, [r * 100 for r in engagement_ratio], width, label="Engagement ratio (%)")
+#Left axis: post likes and comment likes
+ax1.bar(x - width/2, post_scores, width, label="Post upvotes", color="skyblue")
+ax1.bar(x + width/2, comment_scores, width, label="Comment upvotes", color="lightgreen")
+ax1.set_xlabel("Top 10 posts (rank)")
+ax1.set_ylabel("Number of upvotes")
+ax1.tick_params(axis='y')
+ax1.legend(loc='upper left')
 
-#title
-plt.xlabel("Top 10 posts (rank)")
-plt.ylabel("Number of upvotes")
-plt.title("Test graph: Post upvotes vs Comment upvotes")
+#Right axis: engagement ratio
+ax2 = ax1.twinx()
+ax2.plot(x, engagement_ratio, color="red", marker="o", label="Engagement ratio (comments/post)")
+ax2.set_ylabel("Engagement ratio (comments per post like)")
+ax2.tick_params(axis='y')
+ax2.legend(loc='upper right')
 
-plt.legend()
-
-#Show graph
+plt.title("Post upvotes, Comment upvotes, and Engagement Ratio")
 plt.show()
