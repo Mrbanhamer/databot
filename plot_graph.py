@@ -29,7 +29,7 @@ ax1.legend(loc="upper left")
 
 # Right axis: engagement ratio
 ax2 = ax1.twinx()
-ax2.plot(x, engagement_ratio, marker="o", label="Engagement ratio")
+ax2.plot(x, engagement_ratio, marker="o", color="red", label="Engagement ratio")
 ax2.set_ylabel("Engagement ratio (comment likes per post like)")
 ax2.legend(loc="upper right")
 
