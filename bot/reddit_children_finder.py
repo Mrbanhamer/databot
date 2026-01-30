@@ -1,0 +1,3 @@
+from reddit_connector import reddit_posts
+
+reddit_posts
