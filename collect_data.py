@@ -1,28 +1,50 @@
+import requests
 import json
 
-#-----------------------------
-#MOCK DATA (temporary test data)
-#-----------------------------
-post_scores = [1200, 980, 1500, 700, 430, 860, 300, 1100, 640, 520]
-comment_scores = [400, 350, 600, 200, 90, 300, 60, 500, 180, 140]
+class RedditScraper:
+    def __init__(self, subreddit):
+        self.subreddit = subreddit
+        self.url = f"https://www.reddit.com/r/{subreddit}/top.json?limit=10&t=day"
+        self.headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                          "AppleWebKit/537.36 (KHTML, like Gecko) "
+                          "Chrome/114.0.0.0 Safari/537.36"
+        }
 
-#-----------------------------
-#STRUCTURE DATA FOR JSON
-#-----------------------------
-data = []
+    def collect(self):
+        response = requests.get(self.url, headers=self.headers)
 
-for i in range(len(post_scores)):
-    data.append({
-        "post_rank": i + 1,
-        "post_upvotes": post_scores[i],
-        "comment_upvotes": comment_scores[i],
-        "engagement_ratio": comment_scores[i] / post_scores[i]
-    })
+        if response.status_code != 200:
+            print("Failed to fetch data")
+            print(response.text[:500])
+            return
 
-#-----------------------------
-#SAVE TO JSON FILE
-#-----------------------------
-with open("reddit_data.json", "w", encoding="utf-8") as f:
-    json.dump(data, f, indent=2)
+        data = response.json()
+        posts = data["data"]["children"]
 
-print("reddit_data.json created successfully")
+        collected_data = []
+
+        for i, post in enumerate(posts):
+            post_data = post["data"]
+
+            post_upvotes = post_data["score"]
+            comment_count = post_data["num_comments"]
+
+            collected_data.append({
+                "post_rank": i + 1,
+                "post_upvotes": post_upvotes,
+                "comment_upvotes": comment_count,
+                "engagement_ratio": comment_count / post_upvotes if post_upvotes > 0 else 0
+            })
+
+        with open("reddit_data.json", "w", encoding="utf-8") as f:
+            json.dump(collected_data, f, indent=2)
+
+        print("reddit_data.json created successfully")
+
+
+if __name__ == "__main__":
+
+    subreddit_name = input("Write a subreddit: ")
+    scraper = RedditScraper(subreddit_name)
+    scraper.collect()

@@ -1,62 +1,62 @@
 [
   {
     "post_rank": 1,
-    "post_upvotes": 1200,
-    "comment_upvotes": 400,
-    "engagement_ratio": 0.3333333333333333
+    "post_upvotes": 52498,
+    "comment_upvotes": 1502,
+    "engagement_ratio": 0.028610613737666196
   },
   {
     "post_rank": 2,
-    "post_upvotes": 980,
-    "comment_upvotes": 350,
-    "engagement_ratio": 0.35714285714285715
+    "post_upvotes": 2886,
+    "comment_upvotes": 50,
+    "engagement_ratio": 0.017325017325017324
   },
   {
     "post_rank": 3,
-    "post_upvotes": 1500,
-    "comment_upvotes": 600,
-    "engagement_ratio": 0.4
+    "post_upvotes": 1498,
+    "comment_upvotes": 66,
+    "engagement_ratio": 0.044058744993324434
   },
   {
     "post_rank": 4,
-    "post_upvotes": 700,
-    "comment_upvotes": 200,
-    "engagement_ratio": 0.2857142857142857
+    "post_upvotes": 437,
+    "comment_upvotes": 29,
+    "engagement_ratio": 0.06636155606407322
   },
   {
     "post_rank": 5,
-    "post_upvotes": 430,
-    "comment_upvotes": 90,
-    "engagement_ratio": 0.20930232558139536
+    "post_upvotes": 220,
+    "comment_upvotes": 51,
+    "engagement_ratio": 0.2318181818181818
   },
   {
     "post_rank": 6,
-    "post_upvotes": 860,
-    "comment_upvotes": 300,
-    "engagement_ratio": 0.3488372093023256
+    "post_upvotes": 154,
+    "comment_upvotes": 14,
+    "engagement_ratio": 0.09090909090909091
   },
   {
     "post_rank": 7,
-    "post_upvotes": 300,
-    "comment_upvotes": 60,
-    "engagement_ratio": 0.2
+    "post_upvotes": 77,
+    "comment_upvotes": 9,
+    "engagement_ratio": 0.11688311688311688
   },
   {
     "post_rank": 8,
-    "post_upvotes": 1100,
-    "comment_upvotes": 500,
-    "engagement_ratio": 0.45454545454545453
+    "post_upvotes": 35,
+    "comment_upvotes": 9,
+    "engagement_ratio": 0.2571428571428571
   },
   {
     "post_rank": 9,
-    "post_upvotes": 640,
-    "comment_upvotes": 180,
-    "engagement_ratio": 0.28125
+    "post_upvotes": 32,
+    "comment_upvotes": 3,
+    "engagement_ratio": 0.09375
   },
   {
     "post_rank": 10,
-    "post_upvotes": 520,
-    "comment_upvotes": 140,
-    "engagement_ratio": 0.2692307692307692
+    "post_upvotes": 30,
+    "comment_upvotes": 2,
+    "engagement_ratio": 0.06666666666666667
   }
 ]
