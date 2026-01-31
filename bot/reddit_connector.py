@@ -47,11 +47,11 @@ def reddit_posts():
     if subreddit_name == 'None':
         exit()
     scraper = reddit(subreddit_name)
-    scraper.url_source()
+    return scraper.url_source()
 
 if __name__ == '__main__':
     subreddit_name = main_menu()
     if subreddit_name == 'None':
         exit()
     scraper = reddit(subreddit_name)
-    scraper.connect()
+    print(scraper.url_source())
