@@ -21,7 +21,11 @@ class reddit:
                 url_post = post['data']['url']
                 title = post["data"]["title"]
                 post_title.append(title)
-                url_temp.append("https://www.reddit.com" + url_post)    
+                if url_post.startswith("http"):
+                    full_url = url_post
+                else:
+                    full_url = "https://www.reddit.com" + url_post
+                url_temp.append(full_url)
             return post_title, url_temp
 
 def reddit_posts():
