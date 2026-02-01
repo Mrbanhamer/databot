@@ -4,4 +4,6 @@ from bot.reddit_connector import reddit_posts
 
 print(reddit_posts())
 
-#def child_url_post():
+def child_url_post():
+    reddit_posts()
+
