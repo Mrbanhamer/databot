@@ -9,25 +9,7 @@ class reddit:
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
               "AppleWebKit/537.36 (KHTML, like Gecko) "
               "Chrome/114.0.0.0 Safari/537.36"
-        }
-
-#    def connect(self):
-#        response = requests.get(self.url, headers=self.headers)
-#        if response.status_code == 200:
-#            data = response.json()
-#          posts = data["data"]["children"]
-#            for post in posts:
-#                title = post["data"]["title"]
-#                url_post = post["data"]["url"]
-#                reddit_link = "https://www.reddit.com" + post["data"]["permalink"]
-#                print(title)
-#                print("Post URL:", reddit_link)
-#                print("Direct URL:", url_post)
-#                print("-" * 50)
-#        else:
-#            print("Failed to get JSON. Response text:")
-#            print(response.text[:500])  # show first 500 characters
-    
+        }    
     def url_source(self):
         response = requests.get(self.url, headers=self.headers)
         if response.status_code == 200:

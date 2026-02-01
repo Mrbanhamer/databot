@@ -1,3 +1,5 @@
-from reddit_connector import reddit_posts
+from bot.reddit_connector import reddit_posts
 
-reddit_posts
+print(reddit_posts())
+
+#print(reddit_posts)

@@ -1,6 +1,3 @@
-import json
-import os
-
 def main_menu():
     while True:
         print("\n=== Reddit Data Navigator ===")
