@@ -5,5 +5,10 @@ from bot.reddit_connector import reddit_posts
 print(reddit_posts())
 
 def child_url_post():
-    reddit_posts()
-
+    url_sorter = reddit_posts()
+    for url in url_sorter:
+        if url.startswith('https://www.reddit.com'):
+            source_url = url
+        else:
+            post_title = url
+    
