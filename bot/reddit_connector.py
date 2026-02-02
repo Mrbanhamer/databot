@@ -33,11 +33,9 @@ def reddit_posts():
     if subreddit_name == 'None':
         exit()
     scraper = reddit(subreddit_name)
-    return scraper.url_source()
+    titles, urls, = scraper.url_source()
+    posts = [{"title": t, "url": u} for t, u in zip(titles, urls)]
+    return posts
 
 if __name__ == '__main__':
-    subreddit_name = main_menu()
-    if subreddit_name == 'None':
-        exit()
-    scraper = reddit(subreddit_name)
-    print(scraper.url_source())
+    reddit_posts()
