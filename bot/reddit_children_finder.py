@@ -2,33 +2,45 @@ import requests
 from bot.reddit_connector import reddit_posts
 from json_storage.json_loader import save_titles
 
-#this module will take in name of reddit posts and the url link of them in a list
-
-
 def child_url_post():
     headers = {
         'User-Agent': 'my-reddit-scraper/1.2 (learning project)'
     }
     posts = reddit_posts()
+    post_info_list = []  # List to store dictionaries for each post
+
     for post in posts:
-        # Make sure we request JSON
-        json_url = post['url'] + ".json"
-        response = requests.get(json_url, headers=headers)
+        url = post['url']
+    
+    # Only attempt JSON request if the URL is a reddit post
+        if url.startswith("https://www.reddit.com/r/"):
+            json_url = url + ".json"
+            response = requests.get(json_url, headers=headers)
 
-        if response.status_code == 200:
-            try:
-                data = response.json()
-                post_data = data[0]['data']['children'][0]['data']
-                upvotes = post_data['ups']
-                print(f"Upvotes: {upvotes}")
-            except Exception as e:
-                print("Failed to parse JSON:", e)
+            if response.status_code == 200:
+                try:
+                    data = response.json()
+                    post_data = data[0]['data']['children'][0]['data']
+                    upvotes = post_data.get('ups', 0)
+                    comments = post_data.get('num_comments', 0)
+
+                    post_info = {
+                        'title': post['title'],
+                        'url': url,
+                        'upvotes': upvotes,
+                        'comments': comments
+                    }
+
+                    post_info_list.append(post_info)
+                except Exception as e:
+                    print(f"Failed to parse JSON for {url}:", e)
+            else:
+                print(f"Failed request for {url}: {response.status_code}")
         else:
-            print("Failed request:", response.status_code)
+            print(f"Skipping non-reddit URL: {url}")
 
-        print(post['url'])
-        print(post['title'])
-
+    # Optional: save or print the list of post info
+    print(post_info_list)
 
 if __name__ == '__main__':
     child_url_post()
