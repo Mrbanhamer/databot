@@ -13,8 +13,8 @@ def child_url_post():
         url = post['url']
     
     # Only attempt JSON request if the URL is a reddit post
-        if url.startswith("https://www.reddit.com/r/"):
-            json_url = url + ".json"
+        if url.startswith('https://www.reddit.com/r/'):
+            json_url = url + '.json'
             response = requests.get(json_url, headers=headers)
 
             if response.status_code == 200:
@@ -33,11 +33,11 @@ def child_url_post():
 
                     post_info_list.append(post_info)
                 except Exception as e:
-                    print(f"Failed to parse JSON for {url}:", e)
+                    print(f'Failed to parse JSON for {url}:', e)
             else:
-                print(f"Failed request for {url}: {response.status_code}")
+                print(f'Failed request for {url}: {response.status_code}')
         else:
-            print(f"Skipping non-reddit URL: {url}")
+            print(f'Skipping non-reddit URL: {url}')
 
     # Optional: save or print the list of post info
     print(post_info_list)
