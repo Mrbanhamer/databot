@@ -4,9 +4,22 @@ from bot.reddit_connector import reddit_posts
 
 JSON_PATH = Path(__file__).parent / "posts.json"
 
-def save_posts(posts: list[dict]) -> None:
+def save_posts_unique() -> None:
+    new_posts = reddit_posts()  # list[{"title": ..., "url": ...}]
+
+    if JSON_PATH.exists():
+        existing_posts = json.loads(JSON_PATH.read_text(encoding="utf-8"))
+    else:
+        existing_posts = []
+
+    existing_urls = {post["url"] for post in existing_posts}
+
+    for post in new_posts:
+        if post["url"] not in existing_urls:
+            existing_posts.append(post)
+
     JSON_PATH.write_text(
-        json.dumps(posts, ensure_ascii=False, indent=2),
+        json.dumps(existing_posts, ensure_ascii=False, indent=2),
         encoding="utf-8"
     )
 
@@ -19,7 +32,5 @@ def save_titles() -> None:
     )
 
 if __name__ == "__main__":
-    # saves full posts (title + url)
-    posts = reddit_posts()
-    save_posts(posts)
-    print(f"Saved {len(posts)} posts to {JSON_PATH}")
+    save_posts_unique()
+    print(f"Saved unique posts to {JSON_PATH}")
