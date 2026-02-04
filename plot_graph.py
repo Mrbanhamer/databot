@@ -20,18 +20,29 @@ width = 0.35
 
 fig, ax1 = plt.subplots(figsize=(10, 5))
 
-# Left axis: upvotes
 ax1.bar(x - width/2, post_scores, width, label="Post upvotes")
-ax1.bar(x + width/2, comment_scores, width, label="Comment upvotes")
+ax1.bar(x + width/2, comment_scores, width, label="Comments")
+
 ax1.set_xlabel("Top 10 posts (rank)")
-ax1.set_ylabel("Number of upvotes")
+ax1.set_ylabel("Number of upvotes & comments")
 ax1.legend(loc="upper left")
 
-# Right axis: engagement ratio
-ax2 = ax1.twinx()
-ax2.plot(x, engagement_ratio, marker="o", color="red", label="Engagement ratio")
-ax2.set_ylabel("Engagement ratio (comment likes per post like)")
-ax2.legend(loc="upper right")
+plt.title("Post upvotes and comments")
+plt.show()
 
-plt.title("Post upvotes, Comment upvotes, and Engagement ratio")
+# -----------------------------
+# SEPARATE ENGAGEMENT GRAPH
+# -----------------------------
+avg_engagement = sum(engagement_ratio) / len(engagement_ratio)
+
+plt.figure(figsize=(8, 4))
+plt.plot(x, engagement_ratio, marker="o", label="Engagement ratio")
+plt.axhline(avg_engagement, linestyle="--", label=f"Average: {avg_engagement:.3f}")
+
+plt.xlabel("Top 10 posts (rank)")
+plt.ylabel("Engagement ratio (comments per post like)")
+plt.title("Engagement ratio per post")
+plt.grid(True)
+plt.legend()
+plt.savefig("engagement_plot.png", dpi=300, bbox_inches="tight")
 plt.show()

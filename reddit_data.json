@@ -1,62 +1,62 @@
 [
   {
     "post_rank": 1,
-    "post_upvotes": 3261,
-    "comment_upvotes": 87,
-    "engagement_ratio": 0.02667893284268629
+    "post_upvotes": 1109,
+    "comment_upvotes": 359,
+    "engagement_ratio": 0.3237150586113616
   },
   {
     "post_rank": 2,
-    "post_upvotes": 1463,
-    "comment_upvotes": 141,
-    "engagement_ratio": 0.09637730690362269
+    "post_upvotes": 333,
+    "comment_upvotes": 146,
+    "engagement_ratio": 0.43843843843843844
   },
   {
     "post_rank": 3,
-    "post_upvotes": 302,
-    "comment_upvotes": 52,
-    "engagement_ratio": 0.17218543046357615
+    "post_upvotes": 288,
+    "comment_upvotes": 43,
+    "engagement_ratio": 0.14930555555555555
   },
   {
     "post_rank": 4,
-    "post_upvotes": 209,
-    "comment_upvotes": 17,
-    "engagement_ratio": 0.08133971291866028
+    "post_upvotes": 286,
+    "comment_upvotes": 14,
+    "engagement_ratio": 0.04895104895104895
   },
   {
     "post_rank": 5,
-    "post_upvotes": 62,
-    "comment_upvotes": 37,
-    "engagement_ratio": 0.5967741935483871
+    "post_upvotes": 244,
+    "comment_upvotes": 20,
+    "engagement_ratio": 0.08196721311475409
   },
   {
     "post_rank": 6,
-    "post_upvotes": 47,
-    "comment_upvotes": 34,
-    "engagement_ratio": 0.723404255319149
+    "post_upvotes": 236,
+    "comment_upvotes": 170,
+    "engagement_ratio": 0.7203389830508474
   },
   {
     "post_rank": 7,
-    "post_upvotes": 35,
-    "comment_upvotes": 16,
-    "engagement_ratio": 0.45714285714285713
+    "post_upvotes": 227,
+    "comment_upvotes": 184,
+    "engagement_ratio": 0.8105726872246696
   },
   {
     "post_rank": 8,
-    "post_upvotes": 33,
-    "comment_upvotes": 14,
-    "engagement_ratio": 0.42424242424242425
+    "post_upvotes": 116,
+    "comment_upvotes": 199,
+    "engagement_ratio": 1.7155172413793103
   },
   {
     "post_rank": 9,
-    "post_upvotes": 20,
-    "comment_upvotes": 12,
-    "engagement_ratio": 0.6
+    "post_upvotes": 94,
+    "comment_upvotes": 40,
+    "engagement_ratio": 0.425531914893617
   },
   {
     "post_rank": 10,
-    "post_upvotes": 14,
-    "comment_upvotes": 4,
-    "engagement_ratio": 0.2857142857142857
+    "post_upvotes": 94,
+    "comment_upvotes": 56,
+    "engagement_ratio": 0.5957446808510638
   }
 ]
