@@ -15,27 +15,27 @@ class reddit:
         if response.status_code == 200:
             data = response.json()
             posts = data["data"]["children"]
-            post_title=[]
-            url_temp=[]
+            post_list = []
             for post in posts:
-                url_post = post['data']['url']
-                title = post["data"]["title"]
-                post_title.append(title)
-                if url_post.startswith("http"):
-                    full_url = url_post
-                else:
-                    full_url = "https://www.reddit.com" + url_post
-                url_temp.append(full_url)
-            return post_title, url_temp
+                url_post = post['data']['url']        # external URL or self-post
+                title = post['data']['title']
+                permalink = post['data']['permalink']  # Reddit comment thread
+                post_list.append({
+                    "title": title,
+                    "url": url_post,
+                    "permalink": permalink
+                })
+            return post_list
+
 
 def reddit_posts():
     subreddit_name = main_menu()
     if subreddit_name == 'None':
         exit()
     scraper = reddit(subreddit_name)
-    titles, urls, = scraper.url_source()
-    posts = [{"title": t, "url": u} for t, u in zip(titles, urls)]
+    posts = scraper.url_source()  # already a list of dicts with title, url, permalink
     return posts
+
 
 if __name__ == '__main__':
     reddit_posts()
