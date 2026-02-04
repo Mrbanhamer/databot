@@ -1,62 +1,62 @@
 [
   {
     "post_rank": 1,
-    "post_upvotes": 3217,
+    "post_upvotes": 3261,
     "comment_upvotes": 87,
-    "engagement_ratio": 0.027043829654958034
+    "engagement_ratio": 0.02667893284268629
   },
   {
     "post_rank": 2,
-    "post_upvotes": 1443,
-    "comment_upvotes": 140,
-    "engagement_ratio": 0.09702009702009702
+    "post_upvotes": 1463,
+    "comment_upvotes": 141,
+    "engagement_ratio": 0.09637730690362269
   },
   {
     "post_rank": 3,
-    "post_upvotes": 288,
-    "comment_upvotes": 50,
-    "engagement_ratio": 0.1736111111111111
+    "post_upvotes": 302,
+    "comment_upvotes": 52,
+    "engagement_ratio": 0.17218543046357615
   },
   {
     "post_rank": 4,
-    "post_upvotes": 207,
+    "post_upvotes": 209,
     "comment_upvotes": 17,
-    "engagement_ratio": 0.0821256038647343
+    "engagement_ratio": 0.08133971291866028
   },
   {
     "post_rank": 5,
-    "post_upvotes": 61,
+    "post_upvotes": 62,
     "comment_upvotes": 37,
-    "engagement_ratio": 0.6065573770491803
+    "engagement_ratio": 0.5967741935483871
   },
   {
     "post_rank": 6,
-    "post_upvotes": 48,
+    "post_upvotes": 47,
     "comment_upvotes": 34,
-    "engagement_ratio": 0.7083333333333334
+    "engagement_ratio": 0.723404255319149
   },
   {
     "post_rank": 7,
-    "post_upvotes": 33,
+    "post_upvotes": 35,
     "comment_upvotes": 16,
-    "engagement_ratio": 0.48484848484848486
+    "engagement_ratio": 0.45714285714285713
   },
   {
     "post_rank": 8,
-    "post_upvotes": 30,
-    "comment_upvotes": 13,
-    "engagement_ratio": 0.43333333333333335
+    "post_upvotes": 33,
+    "comment_upvotes": 14,
+    "engagement_ratio": 0.42424242424242425
   },
   {
     "post_rank": 9,
-    "post_upvotes": 21,
+    "post_upvotes": 20,
     "comment_upvotes": 12,
-    "engagement_ratio": 0.5714285714285714
+    "engagement_ratio": 0.6
   },
   {
     "post_rank": 10,
-    "post_upvotes": 15,
+    "post_upvotes": 14,
     "comment_upvotes": 4,
-    "engagement_ratio": 0.26666666666666666
+    "engagement_ratio": 0.2857142857142857
   }
 ]

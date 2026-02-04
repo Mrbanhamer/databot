@@ -2,11 +2,25 @@ import requests
 import json
 import logging
 
+# Logger for successful runs
 logging.basicConfig(
-    filename="errors.log",
-    level=logging.ERROR,
+    filename="app.log",
+    level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
+
+# Separate logger for errors
+error_logger = logging.getLogger("error_logger")
+error_handler = logging.FileHandler("errors.log")
+error_handler.setLevel(logging.ERROR)
+
+formatter = logging.Formatter(
+    "%(asctime)s - %(levelname)s - %(message)s"
+)
+error_handler.setFormatter(formatter)
+
+error_logger.addHandler(error_handler)
+
 
 
 class RedditScraper:
@@ -20,6 +34,8 @@ class RedditScraper:
         }
 
     def collect(self):
+        logging.info(f"Starting data collection for subreddit: {self.subreddit}")
+
         # 1) HTTP request
         response = requests.get(self.url, headers=self.headers)
 
@@ -27,21 +43,21 @@ class RedditScraper:
         if response.status_code == 404:
             message = f"Subreddit r/{self.subreddit} does not exist (404)."
             print(message)
-            logging.error(message)
+            error_logger.error(message)
             return
 
 
         if response.status_code == 403:
             print(f"Subreddit r/{self.subreddit} is private or forbidden (403).")
             print(message)
-            logging.error(message)
+            error_logger.error(message)
             return
 
         if response.status_code != 200:
             print(f"Failed to fetch data. Status code: {response.status_code}")
             print(message)
-            logging.error(message)
-            logging.error(response.text[:300])
+            error_logger.error(message)
+            error_logger.error(response.text[:300])
             return
 
         # 3) Parse JSON safely
@@ -52,7 +68,7 @@ class RedditScraper:
         if not posts:
             print(f"No posts found in r/{self.subreddit}.")
             print(message)
-            logging.error(message)
+            error_logger.error(message)
             return
         # 5) Collect data
         collected_data = []
@@ -79,6 +95,11 @@ class RedditScraper:
             json.dump(collected_data, f, indent=2)
 
         print("reddit_data.json created successfully")
+
+        logging.info(
+            f"Successfully collected {len(collected_data)} posts "
+            f"from r/{self.subreddit} and saved to reddit_data.json"
+        )
 
 
 
