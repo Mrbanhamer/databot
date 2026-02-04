@@ -40,7 +40,7 @@ def child_url_post():
             print(f'Skipping non-reddit URL: {url}')
 
     # Optional: save or print the list of post info
-    print(post_info_list)
+    return post_info
 
 if __name__ == '__main__':
     child_url_post()
