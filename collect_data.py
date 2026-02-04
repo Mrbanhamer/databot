@@ -1,5 +1,13 @@
 import requests
 import json
+import logging
+
+logging.basicConfig(
+    filename="errors.log",
+    level=logging.ERROR,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
 
 class RedditScraper:
     def __init__(self, subreddit):
@@ -12,16 +20,41 @@ class RedditScraper:
         }
 
     def collect(self):
+        # 1) HTTP request
         response = requests.get(self.url, headers=self.headers)
 
-        if response.status_code != 200:
-            print("Failed to fetch data")
-            print(response.text[:500])
+        # 2) Handle common error
+        if response.status_code == 404:
+            message = f"Subreddit r/{self.subreddit} does not exist (404)."
+            print(message)
+            logging.error(message)
             return
 
+
+        if response.status_code == 403:
+            print(f"Subreddit r/{self.subreddit} is private or forbidden (403).")
+            print(message)
+            logging.error(message)
+            return
+
+        if response.status_code != 200:
+            print(f"Failed to fetch data. Status code: {response.status_code}")
+            print(message)
+            logging.error(message)
+            logging.error(response.text[:300])
+            return
+
+        # 3) Parse JSON safely
         data = response.json()
         posts = data["data"]["children"]
 
+        # 4) Handle empty subreddit
+        if not posts:
+            print(f"No posts found in r/{self.subreddit}.")
+            print(message)
+            logging.error(message)
+            return
+        # 5) Collect data
         collected_data = []
 
         for i, post in enumerate(posts):
@@ -37,10 +70,16 @@ class RedditScraper:
                 "engagement_ratio": comment_count / post_upvotes if post_upvotes > 0 else 0
             })
 
+        # 6) Save to JSON only if we actually collected something
+        if not collected_data:
+            print("No data collected, JSON will not be written.")
+            return
+
         with open("reddit_data.json", "w", encoding="utf-8") as f:
             json.dump(collected_data, f, indent=2)
 
         print("reddit_data.json created successfully")
+
 
 
 if __name__ == "__main__":
