@@ -1,41 +1,35 @@
-import os    # Goal: Standard Library 1 (System interaction)
-import json  # Goal: Standard Library 2 (Data serialization)
-
-def clear_screen():
-    """Clears the terminal screen based on the OS."""
-    # Functional Contribution: Cross-platform compatibility
-    if os.name == 'nt':  # For Windows
-        os.system('cls')
-    else:                # For Mac and Linux
-        os.system('clear')
+import os
+import json
+import sys
 
 def main_menu():
-    # Goal: Advanced Data Type (Loading from a JSON string or file)
-    # This replaces your hardcoded dict with a data-driven approach
     subreddits_json = '{"1": "python", "2": "technology", "3": "datascience"}'
     subreddits = json.loads(subreddits_json)
 
     while True:
-        clear_screen()  # Use of 'os' to keep the menu clean
-        print("=== Reddit Data Navigator ===")
-        print("Current Directory:", os.getcwd()) # Shows your current folder path
+        print("=== Reddit Data Navigator ===\n")
+        print("Current Directory:", os.getcwd(), "\n")
         
         for key, name in subreddits.items():
-            print(f"{key}. View r/{name}")
+            print(f"{key}. r/{name}")
         
         exit_val = str(len(subreddits) + 1)
         print(f"{exit_val}. Exit")
-
-        choice = input(f"\nSelect an option (1-{exit_val}): ")
-
+        
+        choice = input(f"\nSelect an option (1-{exit_val}): ").strip()
+        
         if choice in subreddits:
-            print(f"\nNavigating to r/{subreddits[choice]}...")
-            input("Press Enter to return to menu...") # Pause so user can see it
+            selected_subreddit = subreddits[choice]
+            print(f"\nYou selected r/{selected_subreddit}!")
+            input("Press Enter to continue...")
+            return selected_subreddit  # Return the string of the selected subreddit
         elif choice == exit_val:
             print("Exiting... Goodbye!")
-            break
+            sys.exit()  # Immediately terminate the program
         else:
             input("Invalid choice. Press Enter to try again...")
 
 if __name__ == "__main__":
-    main_menu()
+    result = main_menu()
+    if result:
+        print(f"Selected subreddit: {result}")
