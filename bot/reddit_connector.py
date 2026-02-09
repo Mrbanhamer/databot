@@ -30,8 +30,6 @@ class reddit:
 
 def reddit_posts():
     subreddit_name = main_menu()
-    if subreddit_name == 'None':
-        exit()
     scraper = reddit(subreddit_name)
     posts = scraper.url_source()  # already a list of dicts with title, url, permalink
     return posts
@@ -39,3 +37,4 @@ def reddit_posts():
 
 if __name__ == '__main__':
     reddit_posts()
+
