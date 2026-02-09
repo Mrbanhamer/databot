@@ -31,11 +31,6 @@ def main_menu():
             print(Fore.GREEN + f"\nYou selected r/{selected_subreddit}!")
             input(Fore.YELLOW + "Press Enter to continue...")
             return selected_subreddit
-<<<<<<< HEAD
-        elif choice == exit_val:
-            print(Fore.RED + "Exiting... Goodbye!")
-            sys.exit()  
-=======
 
         elif choice == custom_option:
             custom = input(Fore.CYAN + "\nEnter subreddit name (without r/): " + Style.RESET_ALL).strip()
@@ -54,7 +49,6 @@ def main_menu():
             print(Fore.RED + "\nExiting... Goodbye!")
             sys.exit()
 
->>>>>>> 81b440a1e56b8e6b77ae808e4568f4c4060f34e0
         else:
             input(Fore.RED + "Invalid choice. Press Enter to try again...")
 
