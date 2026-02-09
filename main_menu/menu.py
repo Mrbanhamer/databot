@@ -1,8 +1,10 @@
 import os
 import json
 import sys
-import colorama 
-from colorama import Fore, Back, Style
+import colorama
+from colorama import Fore, Style
+
+colorama.init(autoreset=True)
 
 def main_menu():
     subreddits_json = '{"1": "python", "2": "technology", "3": "datascience"}'
@@ -10,29 +12,47 @@ def main_menu():
 
     while True:
         print(Fore.CYAN + "Welcome to The Reddit DataBot!")
-        print(Fore.LIGHTMAGENTA_EX + "=== Reddit Data Navigator ===\n")
-        print("Current Directory:", os.getcwd(), "\n")
-        
+        print(Fore.LIGHTMAGENTA_EX + "=== Reddit Data Navigator ===\n" + Style.RESET_ALL)
+        print(Fore.WHITE + "Current Directory: " + Fore.YELLOW + os.getcwd() + "\n")
+
         for key, name in subreddits.items():
-            print(f"{key}. r/{name}")
-        
-        exit_val = str(len(subreddits) + 1)
-        print(f"{exit_val}. Exit")
-        
-        choice = input(f"\nSelect an option (1-{exit_val}): ").strip()
-        
+            print(Fore.GREEN + f"{key}." + Fore.WHITE + f" r/{name}")
+
+        custom_option = str(len(subreddits) + 1)
+        exit_val = str(len(subreddits) + 2)
+
+        print(Fore.MAGENTA + f"{custom_option}. Enter custom subreddit")
+        print(Fore.RED + f"{exit_val}. Exit")
+
+        choice = input(Fore.CYAN + f"\nSelect an option (1-{exit_val}): " + Style.RESET_ALL).strip()
+
         if choice in subreddits:
             selected_subreddit = subreddits[choice]
-            print(f"\nYou selected r/{selected_subreddit}!")
+            print(Fore.GREEN + f"\nYou selected r/{selected_subreddit}!")
             input(Fore.YELLOW + "Press Enter to continue...")
-            return selected_subreddit  # Return the string of the selected subreddit
+            return selected_subreddit
+
+        elif choice == custom_option:
+            custom = input(Fore.CYAN + "\nEnter subreddit name (without r/): " + Style.RESET_ALL).strip()
+
+            # Enkel validering: ta bort ev. "r/" och trimma
+            custom = custom.replace("r/", "").strip().lower()
+
+            if custom and " " not in custom:
+                print(Fore.GREEN + f"\nYou selected r/{custom}!")
+                input(Fore.YELLOW + "Press Enter to continue...")
+                return custom
+            else:
+                input(Fore.RED + "Invalid subreddit name. Press Enter to try again...")
+
         elif choice == exit_val:
-            print(Fore.RED + "Exiting... Goodbye!")
-            sys.exit()  # Immediately terminate the program
+            print(Fore.RED + "\nExiting... Goodbye!")
+            sys.exit()
+
         else:
             input(Fore.RED + "Invalid choice. Press Enter to try again...")
 
 if __name__ == "__main__":
     result = main_menu()
     if result:
-        print(f"Selected subreddit: {result}")
+        print(Fore.LIGHTGREEN_EX + f"\nSelected subreddit: {result}")
