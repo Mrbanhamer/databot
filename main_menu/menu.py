@@ -1,24 +1,35 @@
-def main_menu():
-    while True:
-        print("\n=== Reddit Data Navigator ===")
-        print("1. View r/Python")
-        print("2. View r/Technology")
-        print("3. View r/DataScience")
-        print("4. Exit")
-        
-        choice = input("\nSelect an option (1-4): ")
+import os
+import json
+import sys
 
-        if choice == '1':
-            return "python"
-        elif choice == '2':
-            return "technology"
-        elif choice == '3':
-            return "datascience"
-        elif choice == '4':
+def main_menu():
+    subreddits_json = '{"1": "python", "2": "technology", "3": "datascience"}'
+    subreddits = json.loads(subreddits_json)
+
+    while True:
+        print("=== Reddit Data Navigator ===\n")
+        print("Current Directory:", os.getcwd(), "\n")
+        
+        for key, name in subreddits.items():
+            print(f"{key}. r/{name}")
+        
+        exit_val = str(len(subreddits) + 1)
+        print(f"{exit_val}. Exit")
+        
+        choice = input(f"\nSelect an option (1-{exit_val}): ").strip()
+        
+        if choice in subreddits:
+            selected_subreddit = subreddits[choice]
+            print(f"\nYou selected r/{selected_subreddit}!")
+            input("Press Enter to continue...")
+            return selected_subreddit  # Return the string of the selected subreddit
+        elif choice == exit_val:
             print("Exiting... Goodbye!")
-            return 'None'
+            sys.exit()  # Immediately terminate the program
         else:
-            print("Invalid choice, please try again.")
+            input("Invalid choice. Press Enter to try again...")
 
 if __name__ == "__main__":
-    main_menu()
+    result = main_menu()
+    if result:
+        print(f"Selected subreddit: {result}")
