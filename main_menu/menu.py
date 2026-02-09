@@ -25,10 +25,10 @@ def main_menu():
             selected_subreddit = subreddits[choice]
             print(f"\nYou selected r/{selected_subreddit}!")
             input(Fore.YELLOW + "Press Enter to continue...")
-            return selected_subreddit  # Return the string of the selected subreddit
+            return selected_subreddit
         elif choice == exit_val:
             print(Fore.RED + "Exiting... Goodbye!")
-            sys.exit()  # Immediately terminate the program
+            sys.exit()  
         else:
             input(Fore.RED + "Invalid choice. Press Enter to try again...")
 
