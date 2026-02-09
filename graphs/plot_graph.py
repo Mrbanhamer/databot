@@ -5,7 +5,7 @@ import numpy as np
 # -----------------------------
 # LOAD DATA FROM JSON
 # -----------------------------
-with open("reddit_data.json", "r", encoding="utf-8") as f:
+with open("json_storage/posts.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 post_scores = [d["post_upvotes"] for d in data]
